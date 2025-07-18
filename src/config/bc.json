@@ -1,0 +1,607 @@
+{
+    "temperature_sensor": {
+      "description": "Sıcaklık ve nem sensörü mesaj formatı",
+      "example": {
+        "Temp": 22.5,
+        "Humidity": 65,
+        "Battery": 95,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Temp": {
+          "type": "number",
+          "unit": "°C",
+          "description": "Sıcaklık değeri",
+          "range": "0-50"
+        },
+        "Humidity": {
+          "type": "number", 
+          "unit": "%",
+          "description": "Nem değeri",
+          "range": "0-100"
+        },
+        "Battery": {
+          "type": "number",
+          "unit": "%",
+          "description": "Pil seviyesi",
+          "range": "0-100",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "door_sensor": {
+      "description": "Kapı sensörü mesaj formatı",
+      "example": {
+        "Door": "Closed",
+        "Battery": 92,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Door": {
+          "type": "string",
+          "values": ["Open", "Closed"],
+          "description": "Kapı durumu"
+        },
+        "Battery": {
+          "type": "number",
+          "unit": "%",
+          "description": "Pil seviyesi",
+          "range": "0-100",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "relay": {
+      "description": "Akıllı röle mesaj formatı",
+      "example": {
+        "Relay": "ON",
+        "Power": 15.2,
+        "Voltage": 230.5,
+        "Current": 0.066,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Relay": {
+          "type": "string",
+          "values": ["ON", "OFF"],
+          "description": "Röle durumu"
+        },
+        "Power": {
+          "type": "number",
+          "unit": "W",
+          "description": "Güç tüketimi",
+          "optional": true
+        },
+        "Voltage": {
+          "type": "number",
+          "unit": "V",
+          "description": "Voltaj",
+          "optional": true
+        },
+        "Current": {
+          "type": "number",
+          "unit": "A",
+          "description": "Akım",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "motion_sensor": {
+      "description": "Hareket sensörü mesaj formatı",
+      "example": {
+        "Motion": "Detected",
+        "Battery": 88,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Motion": {
+          "type": "string",
+          "values": ["Detected", "Clear"],
+          "description": "Hareket durumu"
+        },
+        "Battery": {
+          "type": "number",
+          "unit": "%",
+          "description": "Pil seviyesi",
+          "range": "0-100",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "distance_sensor": {
+      "description": "Mesafe sensörü mesaj formatı",
+      "example": {
+        "Distance": 150,
+        "Quality": "Good",
+        "Battery": 95,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Distance": {
+          "type": "number",
+          "unit": "cm",
+          "description": "Mesafe değeri",
+          "range": "0-400"
+        },
+        "Quality": {
+          "type": "string",
+          "values": ["Good", "Fair", "Poor"],
+          "description": "Ölçüm kalitesi",
+          "optional": true
+        },
+        "Battery": {
+          "type": "number",
+          "unit": "%",
+          "description": "Pil seviyesi",
+          "range": "0-100",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "smart_thermostat": {
+      "description": "Akıllı termostat mesaj formatı",
+      "example": {
+        "CurrentTemp": 22.5,
+        "TargetTemp": 24,
+        "Mode": "Heat",
+        "Status": "Running",
+        "Humidity": 65,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "CurrentTemp": {
+          "type": "number",
+          "unit": "°C",
+          "description": "Mevcut sıcaklık",
+          "range": "0-50"
+        },
+        "TargetTemp": {
+          "type": "number",
+          "unit": "°C",
+          "description": "Hedef sıcaklık",
+          "range": "15-30"
+        },
+        "Mode": {
+          "type": "string",
+          "values": ["Heat", "Cool", "Auto", "Off"],
+          "description": "Çalışma modu"
+        },
+        "Status": {
+          "type": "string",
+          "values": ["Running", "Idle", "Off"],
+          "description": "Sistem durumu"
+        },
+        "Humidity": {
+          "type": "number",
+          "unit": "%",
+          "description": "Nem değeri",
+          "range": "0-100",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "air_quality": {
+      "description": "Hava kalitesi sensörü mesaj formatı",
+      "example": {
+        "CO2": 450,
+        "PM25": 12,
+        "VOC": 0.5,
+        "AQI": "Good",
+        "Temperature": 22.5,
+        "Humidity": 65,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "CO2": {
+          "type": "number",
+          "unit": "ppm",
+          "description": "Karbondioksit seviyesi",
+          "range": "400-2000"
+        },
+        "PM25": {
+          "type": "number",
+          "unit": "μg/m³",
+          "description": "PM2.5 parçacık seviyesi",
+          "range": "0-100"
+        },
+        "VOC": {
+          "type": "number",
+          "unit": "ppm",
+          "description": "Uçucu organik bileşikler",
+          "range": "0-10",
+          "optional": true
+        },
+        "AQI": {
+          "type": "string",
+          "values": ["Good", "Moderate", "Poor", "Very Poor"],
+          "description": "Hava kalitesi indeksi"
+        },
+        "Temperature": {
+          "type": "number",
+          "unit": "°C",
+          "description": "Sıcaklık",
+          "range": "0-50",
+          "optional": true
+        },
+        "Humidity": {
+          "type": "number",
+          "unit": "%",
+          "description": "Nem",
+          "range": "0-100",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "security_camera": {
+      "description": "Güvenlik kamerası mesaj formatı",
+      "example": {
+        "Status": "Recording",
+        "Motion": false,
+        "Storage": 85,
+        "Battery": 95,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Status": {
+          "type": "string",
+          "values": ["Recording", "Standby", "Offline"],
+          "description": "Kamera durumu"
+        },
+        "Motion": {
+          "type": "boolean",
+          "description": "Hareket algılama",
+          "values": [true, false]
+        },
+        "Storage": {
+          "type": "number",
+          "unit": "%",
+          "description": "Depolama kullanımı",
+          "range": "0-100"
+        },
+        "Battery": {
+          "type": "number",
+          "unit": "%",
+          "description": "Pil seviyesi",
+          "range": "0-100",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "smart_lock": {
+      "description": "Akıllı kilit mesaj formatı",
+      "example": {
+        "Status": "Locked",
+        "Battery": 78,
+        "LastUser": "John",
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Status": {
+          "type": "string",
+          "values": ["Locked", "Unlocked"],
+          "description": "Kilit durumu"
+        },
+        "Battery": {
+          "type": "number",
+          "unit": "%",
+          "description": "Pil seviyesi",
+          "range": "0-100"
+        },
+        "LastUser": {
+          "type": "string",
+          "description": "Son kullanıcı",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "water_leak_sensor": {
+      "description": "Su kaçağı sensörü mesaj formatı",
+      "example": {
+        "Status": "Dry",
+        "Battery": 92,
+        "LastCheck": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Status": {
+          "type": "string",
+          "values": ["Dry", "Wet", "Warning"],
+          "description": "Su kaçağı durumu"
+        },
+        "Battery": {
+          "type": "number",
+          "unit": "%",
+          "description": "Pil seviyesi",
+          "range": "0-100"
+        },
+        "LastCheck": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son kontrol zamanı"
+        }
+      }
+    },
+    "light_sensor": {
+      "description": "Işık sensörü mesaj formatı",
+      "example": {
+        "Light": 850,
+        "Lux": 850,
+        "Battery": 95,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Light": {
+          "type": "number",
+          "unit": "lux",
+          "description": "Işık seviyesi",
+          "range": "0-10000"
+        },
+        "Lux": {
+          "type": "number",
+          "unit": "lux",
+          "description": "Işık yoğunluğu",
+          "range": "0-10000",
+          "optional": true
+        },
+        "Battery": {
+          "type": "number",
+          "unit": "%",
+          "description": "Pil seviyesi",
+          "range": "0-100",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "smoke_detector": {
+      "description": "Duman dedektörü mesaj formatı",
+      "example": {
+        "Status": "Normal",
+        "Smoke": 0,
+        "Battery": 95,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Status": {
+          "type": "string",
+          "values": ["Normal", "Warning", "Alarm"],
+          "description": "Dedektör durumu"
+        },
+        "Smoke": {
+          "type": "number",
+          "unit": "ppm",
+          "description": "Duman seviyesi",
+          "range": "0-1000"
+        },
+        "Battery": {
+          "type": "number",
+          "unit": "%",
+          "description": "Pil seviyesi",
+          "range": "0-100"
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "gas_sensor": {
+      "description": "Gaz sensörü mesaj formatı",
+      "example": {
+        "CO": 0,
+        "LPG": 0,
+        "Methane": 0,
+        "Status": "Normal",
+        "Battery": 95,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "CO": {
+          "type": "number",
+          "unit": "ppm",
+          "description": "Karbon monoksit seviyesi",
+          "range": "0-1000"
+        },
+        "LPG": {
+          "type": "number",
+          "unit": "ppm",
+          "description": "LPG seviyesi",
+          "range": "0-1000",
+          "optional": true
+        },
+        "Methane": {
+          "type": "number",
+          "unit": "ppm",
+          "description": "Metan seviyesi",
+          "range": "0-1000",
+          "optional": true
+        },
+        "Status": {
+          "type": "string",
+          "values": ["Normal", "Warning", "Danger"],
+          "description": "Gaz durumu"
+        },
+        "Battery": {
+          "type": "number",
+          "unit": "%",
+          "description": "Pil seviyesi",
+          "range": "0-100"
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "soil_moisture": {
+      "description": "Toprak nemi sensörü mesaj formatı",
+      "example": {
+        "Moisture": 65,
+        "Temperature": 18.5,
+        "Battery": 95,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Moisture": {
+          "type": "number",
+          "unit": "%",
+          "description": "Toprak nemi",
+          "range": "0-100"
+        },
+        "Temperature": {
+          "type": "number",
+          "unit": "°C",
+          "description": "Toprak sıcaklığı",
+          "range": "-10-50",
+          "optional": true
+        },
+        "Battery": {
+          "type": "number",
+          "unit": "%",
+          "description": "Pil seviyesi",
+          "range": "0-100",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "wind_sensor": {
+      "description": "Rüzgar sensörü mesaj formatı",
+      "example": {
+        "Speed": 12.5,
+        "Direction": 180,
+        "Gust": 18.2,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Speed": {
+          "type": "number",
+          "unit": "km/h",
+          "description": "Rüzgar hızı",
+          "range": "0-200"
+        },
+        "Direction": {
+          "type": "number",
+          "unit": "degrees",
+          "description": "Rüzgar yönü",
+          "range": "0-360"
+        },
+        "Gust": {
+          "type": "number",
+          "unit": "km/h",
+          "description": "Rüzgar patlaması",
+          "range": "0-200",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    },
+    "rain_sensor": {
+      "description": "Yağmur sensörü mesaj formatı",
+      "example": {
+        "Rain": true,
+        "Intensity": 5.2,
+        "Total": 12.5,
+        "LastSeen": "2024-01-15T10:30:00Z"
+      },
+      "fields": {
+        "Rain": {
+          "type": "boolean",
+          "description": "Yağmur durumu",
+          "values": [true, false]
+        },
+        "Intensity": {
+          "type": "number",
+          "unit": "mm/h",
+          "description": "Yağmur yoğunluğu",
+          "range": "0-100",
+          "optional": true
+        },
+        "Total": {
+          "type": "number",
+          "unit": "mm",
+          "description": "Toplam yağış",
+          "range": "0-1000",
+          "optional": true
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "ISO 8601",
+          "description": "Son görülme zamanı",
+          "optional": true
+        }
+      }
+    }
+  } 

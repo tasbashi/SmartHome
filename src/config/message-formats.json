@@ -1,0 +1,216 @@
+{
+  "temperature_sensor": {
+    "description": "Sıcaklık ve nem sensörü mesaj formatı",
+    "topic": "home/{room}/temperature",
+    "send_topic": "home/{room}/temperature_send",
+    "message": {
+      "Temp": 25,
+      "Humidity": 65
+    },
+    "optional_fields": {
+      "Battery": 95,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "door_sensor": {
+    "description": "Kapı sensörü mesaj formatı",
+    "topic": "home/{room}/door",
+    "send_topic": "home/{room}/door_send",
+    "message": {
+      "Door": "Closed"
+    },
+    "optional_fields": {
+      "Battery": 92,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "relay": {
+    "description": "Akıllı röle mesaj formatı",
+    "topic": "home/{room}/relay",
+    "send_topic": "home/{room}/relay_send",
+    "message": {
+      "Relay": "ON"
+    },
+    "optional_fields": {
+      "Power": 15.2,
+      "Voltage": 230.5,
+      "Current": 0.066,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "motion_sensor": {
+    "description": "Hareket sensörü mesaj formatı",
+    "topic": "home/{room}/motion",
+    "send_topic": "home/{room}/motion_send",
+    "message": {
+      "Motion": "Detected"
+    },
+    "optional_fields": {
+      "Battery": 88,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "distance_sensor": {
+    "description": "Mesafe sensörü mesaj formatı",
+    "topic": "home/{room}/distance",
+    "send_topic": "home/{room}/distance_send",
+    "message": {
+      "Distance": 150
+    },
+    "optional_fields": {
+      "Quality": "Good",
+      "Battery": 95,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "smart_thermostat": {
+    "description": "Akıllı termostat mesaj formatı",
+    "topic": "home/{room}/thermostat",
+    "send_topic": "home/{room}/thermostat_send",
+    "message": {
+      "CurrentTemp": 22.5,
+      "TargetTemp": 24,
+      "Mode": "Heat",
+      "Status": "Running"
+    },
+    "optional_fields": {
+      "Humidity": 65,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "air_quality": {
+    "description": "Hava kalitesi sensörü mesaj formatı",
+    "topic": "home/{room}/airquality",
+    "send_topic": "home/{room}/airquality_send",
+    "message": {
+      "CO2": 450,
+      "PM25": 12,
+      "AQI": "Good"
+    },
+    "optional_fields": {
+      "VOC": 0.5,
+      "Temperature": 22.5,
+      "Humidity": 65,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "security_camera": {
+    "description": "Güvenlik kamerası mesaj formatı",
+    "topic": "home/{room}/camera",
+    "send_topic": "home/{room}/camera_send",
+    "message": {
+      "Status": "Recording",
+      "Motion": false,
+      "Storage": 85
+    },
+    "optional_fields": {
+      "Battery": 95,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "smart_lock": {
+    "description": "Akıllı kilit mesaj formatı",
+    "topic": "home/{room}/lock",
+    "send_topic": "home/{room}/lock_send",
+    "message": {
+      "Status": "Locked",
+      "Battery": 78
+    },
+    "optional_fields": {
+      "LastUser": "John",
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "water_leak_sensor": {
+    "description": "Su kaçağı sensörü mesaj formatı",
+    "topic": "home/{room}/leak",
+    "send_topic": "home/{room}/leak_send",
+    "message": {
+      "Status": "Dry",
+      "Battery": 92
+    },
+    "optional_fields": {
+      "LastCheck": "2024-01-15T10:30:00Z"
+    }
+  },
+  "light_sensor": {
+    "description": "Işık sensörü mesaj formatı",
+    "topic": "home/{room}/light",
+    "send_topic": "home/{room}/light_send",
+    "message": {
+      "Light": 850
+    },
+    "optional_fields": {
+      "Lux": 850,
+      "Battery": 95,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "smoke_detector": {
+    "description": "Duman dedektörü mesaj formatı",
+    "topic": "home/{room}/smoke",
+    "send_topic": "home/{room}/smoke_send",
+    "message": {
+      "Status": "Normal",
+      "Smoke": 0,
+      "Battery": 95
+    },
+    "optional_fields": {
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "gas_sensor": {
+    "description": "Gaz sensörü mesaj formatı",
+    "topic": "home/{room}/gas",
+    "send_topic": "home/{room}/gas_send",
+    "message": {
+      "CO": 0,
+      "Status": "Normal",
+      "Battery": 95
+    },
+    "optional_fields": {
+      "LPG": 0,
+      "Methane": 0,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "soil_moisture": {
+    "description": "Toprak nemi sensörü mesaj formatı",
+    "topic": "home/garden/soil",
+    "send_topic": "home/garden/soil_send",
+    "message": {
+      "Moisture": 65
+    },
+    "optional_fields": {
+      "Temperature": 18.5,
+      "Battery": 95,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "wind_sensor": {
+    "description": "Rüzgar sensörü mesaj formatı",
+    "topic": "home/outdoor/wind",
+    "send_topic": "home/outdoor/wind_send",
+    "message": {
+      "Speed": 12.5,
+      "Direction": 180
+    },
+    "optional_fields": {
+      "Gust": 18.2,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  },
+  "rain_sensor": {
+    "description": "Yağmur sensörü mesaj formatı",
+    "topic": "home/outdoor/rain",
+    "send_topic": "home/outdoor/rain_send",
+    "message": {
+      "Rain": true
+    },
+    "optional_fields": {
+      "Intensity": 5.2,
+      "Total": 12.5,
+      "LastSeen": "2024-01-15T10:30:00Z"
+    }
+  }
+} 

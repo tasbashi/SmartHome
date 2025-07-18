@@ -1,0 +1,162 @@
+{
+  "temperature_sensor": {
+    "topic": "home/livingroom/temp",
+    "name": "Temperature Sensor",
+    "icon": "thermometer",
+    "unit": "°C",
+    "example": { "Temp": 21.5, "Humidity": 65 },
+    "dataKeys": ["Temp", "Humidity"],
+    "thresholds": {
+      "Temp": { "min": 18, "max": 26 },
+      "Humidity": { "min": 30, "max": 70 }
+    }
+  },
+  "door_sensor": {
+    "topic": "home/frontdoor/state",
+    "name": "Door Sensor",
+    "icon": "door-open",
+    "example": { "Door": "Open", "Battery": 95 },
+    "dataKeys": ["Door", "Battery"],
+    "states": {
+      "Door": {
+        "Open": { "color": "danger", "icon": "door-open" },
+        "Closed": { "color": "success", "icon": "door-closed" }
+      }
+    }
+  },
+  "relay": {
+    "topic": "home/lights/relay1",
+    "name": "Smart Relay",
+    "icon": "zap",
+    "controllable": true,
+    "example": { "Relay": "ON", "Power": 15.2 },
+    "dataKeys": ["Relay", "Power"],
+    "controls": {
+      "Relay": {
+        "type": "toggle",
+        "states": ["ON", "OFF"]
+      }
+    },
+    "states": {
+      "Relay": {
+        "ON": { "color": "success", "icon": "zap" },
+        "OFF": { "color": "gray", "icon": "zap-off" }
+      }
+    }
+  },
+  "motion_sensor": {
+    "topic": "home/livingroom/motion",
+    "name": "Motion Sensor",
+    "icon": "activity",
+    "example": { "Motion": "Detected", "LastSeen": "2024-01-15T10:30:00Z" },
+    "dataKeys": ["Motion", "LastSeen"],
+    "states": {
+      "Motion": {
+        "Detected": { "color": "warning", "icon": "activity" },
+        "Clear": { "color": "success", "icon": "check-circle" }
+      }
+    }
+  },
+  "distance_sensor": {
+    "topic": "home/garage/distance",
+    "name": "Distance Sensor",
+    "icon": "ruler",
+    "unit": "cm",
+    "example": { "Distance": 150, "Quality": "Good" },
+    "dataKeys": ["Distance", "Quality"],
+    "thresholds": {
+      "Distance": { "min": 10, "max": 400 }
+    }
+  },
+  "smart_thermostat": {
+    "topic": "home/hvac/thermostat",
+    "name": "Smart Thermostat",
+    "icon": "gauge",
+    "controllable": true,
+    "example": { "CurrentTemp": 22.5, "TargetTemp": 24, "Mode": "Heat", "Status": "Running" },
+    "dataKeys": ["CurrentTemp", "TargetTemp", "Mode", "Status"],
+    "controls": {
+      "TargetTemp": {
+        "type": "slider",
+        "min": 15,
+        "max": 30,
+        "step": 0.5
+      },
+      "Mode": {
+        "type": "select",
+        "options": ["Heat", "Cool", "Auto", "Off"]
+      }
+    },
+    "states": {
+      "Status": {
+        "Running": { "color": "primary", "icon": "gauge" },
+        "Idle": { "color": "gray", "icon": "pause" },
+        "Off": { "color": "gray", "icon": "power" }
+      }
+    }
+  },
+  "air_quality": {
+    "topic": "home/livingroom/airquality",
+    "name": "Air Quality Sensor",
+    "icon": "wind",
+    "example": { "CO2": 450, "PM25": 12, "VOC": 0.5, "AQI": "Good" },
+    "dataKeys": ["CO2", "PM25", "VOC", "AQI"],
+    "units": {
+      "CO2": "ppm",
+      "PM25": "μg/m³",
+      "VOC": "ppm"
+    },
+    "thresholds": {
+      "CO2": { "good": 400, "moderate": 1000, "poor": 2000 },
+      "PM25": { "good": 12, "moderate": 35, "poor": 55 }
+    }
+  },
+  "security_camera": {
+    "topic": "home/security/camera1",
+    "name": "Security Camera",
+    "icon": "camera",
+    "example": { "Status": "Recording", "Motion": false, "Storage": 85 },
+    "dataKeys": ["Status", "Motion", "Storage"],
+    "states": {
+      "Status": {
+        "Recording": { "color": "danger", "icon": "video" },
+        "Standby": { "color": "warning", "icon": "camera" },
+        "Offline": { "color": "gray", "icon": "camera-off" }
+      }
+    }
+  },
+  "smart_lock": {
+    "topic": "home/frontdoor/lock",
+    "name": "Smart Lock",
+    "icon": "lock",
+    "controllable": true,
+    "example": { "Status": "Locked", "Battery": 78, "LastUser": "John" },
+    "dataKeys": ["Status", "Battery", "LastUser"],
+    "controls": {
+      "Status": {
+        "type": "toggle",
+        "states": ["Locked", "Unlocked"]
+      }
+    },
+    "states": {
+      "Status": {
+        "Locked": { "color": "success", "icon": "lock" },
+        "Unlocked": { "color": "warning", "icon": "unlock" }
+      }
+    }
+  },
+  "water_leak_sensor": {
+    "topic": "home/bathroom/leak",
+    "name": "Water Leak Sensor",
+    "icon": "droplets",
+    "example": { "Status": "Dry", "Battery": 92, "LastCheck": "2024-01-15T10:30:00Z" },
+    "dataKeys": ["Status", "Battery", "LastCheck"],
+    "states": {
+      "Status": {
+        "Dry": { "color": "success", "icon": "shield-check" },
+        "Wet": { "color": "danger", "icon": "droplets" },
+        "Warning": { "color": "warning", "icon": "alert-triangle" }
+      }
+    }
+  }
+} 

@@ -1,0 +1,400 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Prevent horizontal scrolling on mobile */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700;
+  }
+  
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 touch-manipulation;
+    min-height: 44px; /* iOS touch target minimum */
+  }
+  
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+    min-height: 36px;
+  }
+  
+  .btn-xs {
+    @apply px-2 py-1 text-xs;
+    min-height: 32px;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 focus:ring-gray-500;
+  }
+  
+  .btn-success {
+    @apply bg-success-600 hover:bg-success-700 text-white focus:ring-success-500;
+  }
+  
+  .btn-danger {
+    @apply bg-danger-600 hover:bg-danger-700 text-white focus:ring-danger-500;
+  }
+  
+  .btn-warning {
+    @apply bg-warning-600 hover:bg-warning-700 text-white focus:ring-warning-500;
+  }
+  
+  .btn-info {
+    @apply bg-blue-600 hover:bg-blue-700 text-white focus:ring-blue-500;
+  }
+  
+  .input {
+    @apply block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white touch-manipulation;
+    min-height: 44px; /* iOS touch target minimum */
+  }
+  
+  .select {
+    @apply block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white touch-manipulation;
+    min-height: 44px;
+  }
+  
+  .status-indicator {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .status-success {
+    @apply bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200;
+  }
+  
+  .status-warning {
+    @apply bg-warning-100 text-warning-800 dark:bg-warning-900 dark:text-warning-200;
+  }
+  
+  .status-danger {
+    @apply bg-danger-100 text-danger-800 dark:bg-danger-900 dark:text-danger-200;
+  }
+  
+  .status-gray {
+    @apply bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200;
+  }
+  
+  .status-primary {
+    @apply bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200;
+  }
+  
+  .widget-card {
+    @apply card p-4 sm:p-6 hover:shadow-md transition-shadow duration-200;
+    min-height: 100px;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar {
+    @apply bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm;
+  }
+  
+  .sidebar {
+    @apply bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 shadow-sm;
+  }
+  
+  .grid-layout {
+    @apply grid gap-4 sm:gap-6;
+  }
+  
+  /* Mobile-specific grid layouts */
+  .mobile-grid-1 {
+    @apply grid-cols-1;
+  }
+  
+  .mobile-grid-2 {
+    @apply grid-cols-1 sm:grid-cols-2;
+  }
+  
+  .mobile-grid-3 {
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  }
+  
+  .mobile-grid-4 {
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
+  }
+  
+  .mobile-grid-6 {
+    @apply grid-cols-2 sm:grid-cols-3 lg:grid-cols-6;
+  }
+  
+  /* Touch-friendly spacing */
+  .touch-spacing {
+    @apply space-y-4 sm:space-y-6;
+  }
+  
+  .touch-spacing-x {
+    @apply space-x-3 sm:space-x-4;
+  }
+  
+  .react-grid-item {
+    @apply transition-all duration-200;
+    cursor: move;
+    position: relative;
+  }
+  
+  .react-grid-item:hover {
+    @apply shadow-lg;
+  }
+  
+  .react-grid-item.react-grid-placeholder {
+    @apply bg-primary-200 dark:bg-primary-800 opacity-60 rounded-lg;
+  }
+  
+  .react-grid-item.react-draggable-dragging {
+    transition: none;
+    z-index: 1000;
+    cursor: grabbing !important;
+  }
+
+  /* Mobile-specific react-grid adjustments */
+  @media (max-width: 768px) {
+    .react-grid-item {
+      cursor: default;
+    }
+    
+    .react-grid-item.react-draggable-dragging {
+      cursor: grabbing !important;
+    }
+  }
+  
+  /* Hide resize handles completely but keep functionality */
+  .react-resizable-handle {
+    opacity: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: nw-resize;
+  }
+  
+  /* Mobile: Disable resize handles entirely */
+  @media (max-width: 768px) {
+    .react-resizable-handle {
+      display: none !important;
+    }
+  }
+  
+  /* Keep resize functionality but invisible handles on desktop */
+  .react-resizable-handle-se {
+    cursor: se-resize;
+  }
+  
+  .react-resizable-handle-sw {
+    cursor: sw-resize;
+  }
+  
+  .react-resizable-handle-ne {
+    cursor: ne-resize;
+  }
+  
+  .react-resizable-handle-nw {
+    cursor: nw-resize;
+  }
+  
+  .react-resizable-handle-n {
+    cursor: n-resize;
+  }
+  
+  .react-resizable-handle-s {
+    cursor: s-resize;
+  }
+  
+  .react-resizable-handle-e {
+    cursor: e-resize;
+  }
+  
+  .react-resizable-handle-w {
+    cursor: w-resize;
+  }
+  
+  .react-grid-layout {
+    position: relative;
+    min-height: 200px;
+  }
+  
+  /* Mobile: Reduce minimum height */
+  @media (max-width: 768px) {
+    .react-grid-layout {
+      min-height: 100px;
+    }
+  }
+  
+  .react-grid-item.react-grid-placeholder {
+    @apply bg-primary-200 dark:bg-primary-800 opacity-60 rounded-lg border-2 border-primary-300 dark:border-primary-700;
+    transition: all 0.2s ease;
+  }
+  
+  .react-grid-item.cssTransforms {
+    transition-property: transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+  }
+  
+  .react-grid-item.resizing {
+    z-index: 1000;
+    will-change: width, height;
+  }
+  
+  .react-grid-item.react-draggable-dragging {
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Ensure widgets can be resized properly without scrollbars */
+  .widget-card {
+    @apply card p-4 hover:shadow-md transition-shadow duration-200;
+    min-height: 100px;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Mobile: Adjust widget padding */
+  @media (max-width: 640px) {
+    .widget-card {
+      @apply p-3;
+      min-height: 80px;
+    }
+  }
+  
+  /* Hide resize handles in both edit and normal mode */
+  .react-grid-item > .react-resizable-handle {
+    display: block !important;
+    opacity: 0 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+  
+  /* Mobile responsive utilities */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .mobile-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  /* Improved touch targets for mobile */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Mobile-first responsive text sizes */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+  
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+  
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+  
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl;
+  }
+  
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl;
+  }
+}
+
+/* Mobile-specific media queries */
+@media (max-width: 640px) {
+  /* Improve modal and drawer behavior on mobile */
+  .modal-mobile {
+    @apply fixed inset-0 z-50;
+  }
+  
+  /* Better form spacing on mobile */
+  .form-mobile .input,
+  .form-mobile .select,
+  .form-mobile .btn {
+    @apply mb-4;
+  }
+  
+  /* Improve table scrolling on mobile */
+  .table-mobile {
+    @apply overflow-x-auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hide complex UI elements on mobile if needed */
+  .hide-mobile {
+    @apply hidden;
+  }
+  
+  /* Show mobile-specific elements */
+  .show-mobile {
+    @apply block;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pulse-ring {
+  animation: pulseRing 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.33);
+  }
+  40%, 50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} 

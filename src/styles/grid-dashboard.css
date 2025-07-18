@@ -1,0 +1,285 @@
+/* Grid Container */
+.grid-container {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  border-radius: 8px;
+  overflow: visible;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.dark .grid-container {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+/* Grid pattern gösterimi */
+.grid-container.show-grid {
+  background-size: 10px 10px;
+  background-image: 
+    linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  background-position: -1px -1px;
+}
+
+.dark .grid-container.show-grid {
+  background-image: 
+    linear-gradient(to right, #374151 1px, transparent 1px),
+    linear-gradient(to bottom, #374151 1px, transparent 1px);
+}
+
+/* Widget stilleri */
+.grid-widget {
+  position: absolute;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: move;
+  transition: box-shadow 0.2s ease;
+}
+
+.dark .grid-widget {
+  background: #1f2937;
+  border-color: #374151;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Hover efekti */
+.grid-widget:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+
+.dark .grid-widget:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Drag durumu */
+.grid-widget.dragging {
+  opacity: 0.8;
+  z-index: 1000;
+  cursor: grabbing;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Resize durumu */
+.grid-widget.resizing {
+  z-index: 999;
+  cursor: default;
+}
+
+/* Widget içeriği */
+.widget-content {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  overflow: auto;
+  pointer-events: none; /* Sürükleme olaylarının yakalanmasını sağlar */
+}
+
+/* Resize handle'ları - Temel stil */
+.resize-handle {
+  position: absolute;
+  background: transparent;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+/* Widget hover edildiğinde handle'ları göster */
+.grid-widget:hover .resize-handle {
+  opacity: 1;
+}
+
+/* Handle hover efekti */
+.resize-handle:hover {
+  background-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Kenar handle'ları */
+.resize-n {
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 6px;
+  cursor: ns-resize;
+}
+
+.resize-s {
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 6px;
+  cursor: ns-resize;
+}
+
+.resize-e {
+  top: 20px;
+  bottom: 20px;
+  right: 0;
+  width: 6px;
+  cursor: ew-resize;
+}
+
+.resize-w {
+  top: 20px;
+  bottom: 20px;
+  left: 0;
+  width: 6px;
+  cursor: ew-resize;
+}
+
+/* Köşe handle'ları */
+.resize-ne {
+  top: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nesw-resize;
+}
+
+.resize-nw {
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+}
+
+.resize-se {
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+}
+
+.resize-sw {
+  bottom: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nesw-resize;
+}
+
+/* Köşe handle göstergeleri */
+.resize-ne::before,
+.resize-nw::before,
+.resize-se::before,
+.resize-sw::before {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #3b82f6;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.grid-widget:hover .resize-ne::before,
+.grid-widget:hover .resize-nw::before,
+.grid-widget:hover .resize-se::before,
+.grid-widget:hover .resize-sw::before {
+  opacity: 1;
+}
+
+.resize-ne::before {
+  top: 2px;
+  right: 2px;
+}
+
+.resize-nw::before {
+  top: 2px;
+  left: 2px;
+}
+
+.resize-se::before {
+  bottom: 2px;
+  right: 2px;
+}
+
+.resize-sw::before {
+  bottom: 2px;
+  left: 2px;
+}
+
+/* Kenar handle göstergeleri - Orta çizgi */
+.resize-n::after,
+.resize-s::after,
+.resize-e::after,
+.resize-w::after {
+  content: '';
+  position: absolute;
+  background: #3b82f6;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.grid-widget:hover .resize-n::after,
+.grid-widget:hover .resize-s::after,
+.grid-widget:hover .resize-e::after,
+.grid-widget:hover .resize-w::after {
+  opacity: 0.6;
+}
+
+.resize-n::after,
+.resize-s::after {
+  width: 30px;
+  height: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.resize-n::after {
+  top: 2px;
+}
+
+.resize-s::after {
+  bottom: 2px;
+}
+
+.resize-e::after,
+.resize-w::after {
+  width: 2px;
+  height: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.resize-e::after {
+  right: 2px;
+}
+
+.resize-w::after {
+  left: 2px;
+}
+
+/* Mobile görünüm */
+@media (max-width: 640px) {
+  .grid-container {
+    min-height: 400px;
+  }
+  
+  .resize-handle {
+    display: none;
+  }
+  
+  .widget-content {
+    padding: 8px;
+  }
+  
+  .grid-container.show-grid {
+    background-size: 8px 8px;
+  }
+  
+  .grid-widget {
+    cursor: default;
+  }
+}
